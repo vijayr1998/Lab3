@@ -1,44 +1,46 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.io.IOException;
-import java.net.*;
+import java.net.URL;
+
+/* *
+ * This is the code for Lab 3.
+ * */
+
 public class MyCode {
-
-    public static void main(String[] args)
-    {
+/*
+ * This is the main method for Lab 3.
+ * @param args doesn't do anything
+ *  yes
+ */
+    public static void main(final String[] args) {
         //System.out.print(urlToString("http://erdani.com/tdpl/hamlet.txt"));
-        int wordCounter = 0;
-        int princeCounter = 0;
+        int wordCounter = 0; //counts total number of words
+        int princeCounter = 0; //counts instances of the word prince
+        ArrayList<String> words = new ArrayList<>(); //keeps track of all the words
 
-        for(String current : urlToString("http://erdani.com/tdpl/hamlet.txt").split(" "))
-        {
-            if(current.toLowerCase().contains("prince"))
-            {
+        for (String current : urlToString("http://erdani.com/tdpl/hamlet.txt").split(" ")) {
+
+            if (current.toLowerCase().contains("prince")) {
+
                 princeCounter++;
             }
         }
-        ArrayList<String> words = new ArrayList<>();
-        //String current = "";
 
-//        for(int i = 0; i < urlToString("http://erdani.com/tdpl/hamlet.txt").length(); i++)
-//        {
-//            if(current.toLowerCase().contains(" "))
-//            {
-//                wordCounter++;
-//            }
-//        }
-        for(String current : urlToString("http://erdani.com/tdpl/hamlet.txt").split(" "))
-        {
+        for (String current : urlToString("http://erdani.com/tdpl/hamlet.txt").split(" ")) {
+
             current.trim();
-            if(!current.equals(""))
-            {
+            if (!current.equals("")) {
+
                 wordCounter++;
-                if(!words.contains(current))
-                {
+                if (!words.contains(current)) {
+
                     words.add(current);
                 }
             }
         }
-        System.out.println("There are " + wordCounter + " words, with " + princeCounter + " instances of prince occuring");
+        System.out.println("There are " + wordCounter + " words");
+        System.out.println("with " + princeCounter + " instances of prince occuring");
         System.out.println("There are " + words.size() + " unique words");
 
     }
